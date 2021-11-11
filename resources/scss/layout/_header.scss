@@ -1,0 +1,58 @@
+// Header styles
+header {
+    height: 100vh;
+    background: $blue;
+}
+.header {
+    @include flex-between;
+    @include padding-y(2rem);
+    align-items: center;
+
+    &__left {
+        @include flex-center-vert;
+    }
+
+    &__logo {
+        margin-right: 2rem;
+
+        font-size: 2rem;
+        font-weight: bold;
+
+        a {
+            color: $white;
+        }
+    }
+
+    &__nav {
+        ul {
+            display: flex;
+        }
+
+        li {
+            @include margin-x(1rem);
+        }
+
+        a {
+            color: $white;
+            display: flex;
+        }
+    }
+}
+
+.hero {
+    @include flex-center-vert;
+
+    &__left,
+    &__right {
+        width: 50%;
+    }
+
+    &__title,
+    &__text {
+        color: $white;
+    }
+
+    &__title {
+        font-size: 2.5rem;
+    }
+}
