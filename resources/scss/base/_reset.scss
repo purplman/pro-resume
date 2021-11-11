@@ -1,50 +1,51 @@
 *,
 *::before,
 *::after {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 html {
-  scroll-behavior: smooth;
-  overflow-x: hidden;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
 }
 
 a {
-  text-decoration: none;
-  color: #000;
-
-  &:visited {
-    color: #000;
-  }
+    text-decoration: none;
+    color: $black;
+    transition: $transition;
 }
 
 ul {
-  list-style: none;
+    list-style: none;
 }
 
 img {
-  width: 100%;
+    width: 100%;
 }
 
 /* width */
 ::-webkit-scrollbar {
-  width: 10px;
+    width: 10px;
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: #fff;
+    background: #fff;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #f1f1f1;
-  transition: 0.3s;
+    background: #f1f1f1;
+    transition: 0.3s;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #000;
+    background: #000;
+}
+
+.dot {
+    color: $red;
 }

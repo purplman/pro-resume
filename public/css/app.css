@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap);
+@import url(https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;900&display=swap);
 *,
 *::before,
 *::after {
@@ -14,10 +14,8 @@ html {
 
 a {
   text-decoration: none;
-  color: #000;
-}
-a:visited {
-  color: #000;
+  color: #232323;
+  transition: 0.2s ease-in-out;
 }
 
 ul {
@@ -50,8 +48,51 @@ img {
   background: #000;
 }
 
+.dot {
+  color: #ef2747;
+}
+
 body {
   font-family: "Poppins", sans-serif;
+}
+
+.btn {
+  display: inline-flex;
+  justify-content: center;
+  text-decoration: none;
+  border: none;
+  background: none;
+  outline: none;
+  font-family: "Poppins", serif;
+  transition: 0.2s ease-in-out;
+  position: relative;
+  font-weight: 500;
+  color: #fff;
+  padding: 0.25rem 2rem;
+  position: relative;
+  overflow: hidden;
+  border-radius: 0.25rem;
+}
+.btn span {
+  z-index: 2;
+}
+.btn::after {
+  position: absolute;
+  content: "";
+  width: 0;
+  height: 0;
+  top: -10px;
+  left: -25px;
+  z-index: 1;
+  background: #232323;
+  transition: 0.2s ease-in-out;
+}
+.btn--primary {
+  background: #232323;
+  color: #fff;
+}
+.btn--primary:hover {
+  background: #ef2747;
 }
 
 .container {
@@ -1049,7 +1090,6 @@ body {
 
 header {
   height: 100vh;
-  background: #202040;
 }
 
 .header {
@@ -1064,35 +1104,43 @@ header {
   align-items: center;
 }
 .header__logo {
-  margin-right: 2rem;
   font-size: 2rem;
-  font-weight: bold;
+  font-weight: 700;
 }
 .header__logo a {
-  color: #fff;
+  color: #232323;
 }
 .header__nav ul {
   display: flex;
 }
 .header__nav li {
-  margin-right: 1rem;
-  margin-left: 1rem;
+  margin-right: 1.5rem;
+  margin-left: 1.5rem;
 }
 .header__nav a {
-  color: #fff;
   display: flex;
+  font-weight: 500;
+}
+.header__nav a:hover {
+  color: #ef2747;
 }
 
 .hero {
-  display: flex;
-  align-items: center;
-}
-.hero__left, .hero__right {
-  width: 50%;
-}
-.hero__title, .hero__text {
-  color: #fff;
+  margin-top: 10rem;
+  max-width: 75%;
+  margin-left: auto;
+  margin-right: auto;
 }
 .hero__title {
-  font-size: 2.5rem;
+  font-size: 3rem;
+  font-weight: 700;
+  color: #ef2747;
+}
+.hero__title, .hero__text {
+  margin-bottom: 3rem;
+  text-align: center;
+}
+
+.fill-red {
+  fill: #ef2747;
 }

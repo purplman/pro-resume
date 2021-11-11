@@ -1,7 +1,6 @@
 // Header styles
 header {
     height: 100vh;
-    background: $blue;
 }
 .header {
     @include flex-between;
@@ -13,13 +12,11 @@ header {
     }
 
     &__logo {
-        margin-right: 2rem;
-
         font-size: 2rem;
-        font-weight: bold;
+        font-weight: 700;
 
         a {
-            color: $white;
+            color: $black;
         }
     }
 
@@ -29,30 +26,38 @@ header {
         }
 
         li {
-            @include margin-x(1rem);
+            @include margin-x(1.5rem);
         }
 
         a {
-            color: $white;
             display: flex;
+            font-weight: 500;
+
+            &:hover {
+                color: $red;
+            }
         }
     }
 }
 
 .hero {
-    @include flex-center-vert;
+    margin-top: 10rem;
+    max-width: 75%;
+    @include push--auto;
 
-    &__left,
-    &__right {
-        width: 50%;
+    &__title {
+        font-size: 3rem;
+        font-weight: 700;
+        color: $red;
     }
 
     &__title,
     &__text {
-        color: $white;
+        margin-bottom: 3rem;
+        text-align: center;
     }
+}
 
-    &__title {
-        font-size: 2.5rem;
-    }
+.fill-red {
+    fill: $red;
 }

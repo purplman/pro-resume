@@ -1,11 +1,15 @@
-@import "base/reset";
-@import "base/typography";
-
 // Abstract
 @import "abstract/variables";
 @import "abstract/animations";
 @import "abstract/mixins";
 @import "abstract/placeholders";
+
+// Base
+@import "base/reset";
+@import "base/typography";
+
+// Components
+@import "components/buttons";
 
 // Layout
 @import "layout/grid";

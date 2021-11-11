@@ -3,41 +3,41 @@
         <div class="header">
             <div class="header__left">
                 <div class="header__logo">
-                    <a href="">Easy</a>
+                    <a href="">
+                        {{ env('APP_NAME') }}<span class="dot">.</span>
+                    </a>
                 </div>
-                <nav class="header__nav">
-                    <ul>
-                        <li>
-                            <a href="">Home</a>
-                        </li>
-                        <li>
-                            <a href="">Home</a>
-                        </li>
-                        <li>
-                            <a href="">Home</a>
-                        </li>
-                        <li>
-                            <a href="">Home</a>
-                        </li>
-                    </ul>
-                </nav>
             </div>
+            <nav class="header__nav">
+                <ul>
+                    <li>
+                        <a href="">{{ trans('app.home') }}</a>
+                    </li>
+                    <li>
+                        <a href="">{{ trans('app.about') }}</a>
+                    </li>
+                    <li>
+                        <a href="">{{ trans('app.contact') }}</a>
+                    </li>
+                    <li>
+                        <a href="">{{ trans('app.feedback') }}</a>
+                    </li>
+                </ul>
+            </nav>
             <div class="header__right">
-                <a href="">Login</a>
+                @include('front.partials.button', ['href' => '', 'class' => 'primary', 'text' => trans('app.login')])
             </div>
         </div>
         <div class="hero">
-            <div class="hero__left">
-                <h1 class="hero__title">Get Paid Easily <br> without Hassle</h1>
-                <p class="hero__text">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live.</p>
-                <form action="">
-                    <div class="form__box">
-                        <input type="text" placeholder="Email">
-                        <button>Subsribe</button>
-                    </div>
-                </form>
+            <h1 class="hero__title">
+                {{ trans('app.hero_title') }}
+            </h1>
+            <p class="hero__text">
+                {{ trans('app.hero_text') }}
+            </p>
+            <div class="hero__img">
+                <img src="{{ asset('img/hero.svg') }}" alt="">
             </div>
-            <div class="hero__right"></div>
         </div>
     </div>
 </header>
