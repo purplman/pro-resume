@@ -6,15 +6,16 @@
 
     <div class="templates mt-5">
         <div class="row">
-            <div class="col-md-4">
+            @foreach ($templates as $template)
+            <div class="col-md-4 text--center">
                 <img src="{{ asset('img/templates/template-1.jpg') }}" alt="">
+                <a class="btn btn--primary mt-3" href="{{ route('resumes.setTemplate', $template->id) }}">
+                    {{ trans('actions.use_this_template') }}
+                </a>
             </div>
-            <div class="col-md-4">
-                <img src="{{ asset('img/templates/template-2.jpg') }}" alt="">
-            </div>
-            <div class="col-md-4">
-                <img src="{{ asset('img/templates/template-3.jpg') }}" alt="">
-            </div>
+            
+            @endforeach
+            
         </div>
     </div>
 

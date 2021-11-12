@@ -21,6 +21,7 @@
         width: 100%;
         outline: none;
         transition: $transition;
+        border-radius: 0.25rem;
 
         &:focus {
             border-color: $black;

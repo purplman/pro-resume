@@ -39,3 +39,13 @@
 .required {
     color: $red;
 }
+
+.text {
+    &--center {
+        text-align: center;
+    }
+
+    &--right {
+        text-align: right;
+    }
+}

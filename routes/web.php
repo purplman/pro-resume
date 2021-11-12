@@ -28,7 +28,15 @@ Route::middleware('auth')->group(function () {
     Route::post('logout', [LoginController::class, 'logout'])->name('logout');
 
     // Resumes
+    
     Route::resource('resumes', ResumeController::class);
-    Route::get('/resumes/create/contact', [ResumeController::class, 'contact']);
+    
+    Route::prefix('resumes')->group(function() {
+        Route::get('/create/contact', [ResumeController::class, 'contact'])->name('resumes.create.contact');
+
+        Route::get('/template/{id}', [ResumeController::class, 'setTemplate'])->name('resumes.setTemplate');
+
+    });
+    
 
 });

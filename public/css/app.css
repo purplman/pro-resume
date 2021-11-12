@@ -36,6 +36,13 @@
   color: #ef2747;
 }
 
+.text--center {
+  text-align: center;
+}
+.text--right {
+  text-align: right;
+}
+
 *,
 *::before,
 *::after {
@@ -144,6 +151,7 @@ body {
   width: 100%;
   outline: none;
   transition: 0.2s ease-in-out;
+  border-radius: 0.25rem;
 }
 .form__el:focus {
   border-color: #232323;
@@ -1217,9 +1225,12 @@ body {
   display: flex;
   align-items: center;
 }
+.auth__wrapper {
+  background: #f4f4f4;
+}
 .auth__form {
   width: 100%;
   padding: 2rem;
   border-radius: 0.5rem;
-  border: 1px solid #232323;
+  background: #fff;
 }

@@ -4,7 +4,7 @@ namespace App\Services;
 
 use Exception;
 
-class User {
+class UserService {
 
     public static function storeContacts($contacts)
     {
@@ -18,5 +18,9 @@ class User {
             return $e->getMessage();
         }
     }
+
+
+
+
 
 }

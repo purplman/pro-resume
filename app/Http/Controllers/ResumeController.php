@@ -4,8 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreResumeContactRequest;
 use App\Models\Resume;
-use App\Services\User;
 use Illuminate\Http\Request;
+use App\Services\{
+    UserService,
+    ResumeService
+};
 
 class ResumeController extends Controller
 {
@@ -27,14 +30,26 @@ class ResumeController extends Controller
      */
     public function create()
     {
-        // get templates
-        
-        return view('front.resumes.create.template');
+        $templates = ResumeService::getTemplates();
+        return view('front.resumes.create.template', compact('templates'));
     }
+
+
+    /**
+     * Set a template for the new resume.
+     *
+     * @return \Illuminate\Http\Response
+     */
+
+    public function setTemplate($id)
+    {
+        ResumeService::setTemplate($id);
+        return redirect()->route('resumes.create.contact');
+    }
+
 
     public function contact()
     {
-        // get templates
 
         return view('front.resumes.create.contact');
     }
@@ -52,7 +67,7 @@ class ResumeController extends Controller
 
         session()->put('profession', $profession);
 
-        $createContacts = User::storeContacts($contacts);
+        $createContacts = UserService::storeContacts($contacts);
 
         return $createContacts;
 

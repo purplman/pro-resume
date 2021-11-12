@@ -12,7 +12,7 @@
     <body>
         <div class="app">
 
-            <main>
+            <main class="auth__wrapper">
                 <div class="container">
                     @yield('content')
                 </div>

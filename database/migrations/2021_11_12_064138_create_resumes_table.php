@@ -17,8 +17,8 @@ class CreateResumesTable extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained();
             $table->foreignId('template_id')->constrained();
-            $table->string('profession');
-            $table->text('description');
+            $table->string('profession')->nullable();
+            $table->text('description')->nullable();
             $table->timestamps();
         });
     }

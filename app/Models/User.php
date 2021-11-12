@@ -22,6 +22,7 @@ class User extends Authenticatable
         'lastname',
         'email',
         'password',
+        'is_admin'
     ];
 
     /**
@@ -46,6 +47,10 @@ class User extends Authenticatable
 
     public function contact() {
         return $this->hasOne(Contact::class);
+    }
+
+    public function resume() {
+        return $this->hasOne(Resume::class);
     }
 
 }
