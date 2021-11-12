@@ -24,20 +24,19 @@
                     </li>
                 </ul>
             </nav>
+            @guest
             <div class="header__right">
-                @include('front.partials.button', ['href' => '', 'class' => 'primary', 'text' => trans('app.login')])
+                <a href="{{ route('login') }}" class="btn btn--primary">
+                    {{ trans('app.login') }}
+                </a>
             </div>
-        </div>
-        <div class="hero">
-            <h1 class="hero__title">
-                {{ trans('app.hero_title') }}
-            </h1>
-            <p class="hero__text">
-                {{ trans('app.hero_text') }}
-            </p>
-            <div class="hero__img">
-                <img src="{{ asset('img/hero.svg') }}" alt="">
-            </div>
+            @endguest
+            @auth
+                <form action="{{ route('logout') }}" method="post">
+                    @csrf
+                    <button class="btn btn--primary">Logout</button>
+                </form>
+            @endauth
         </div>
     </div>
 </header>

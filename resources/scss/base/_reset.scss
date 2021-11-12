@@ -25,6 +25,10 @@ img {
     width: 100%;
 }
 
+label {
+    cursor: pointer;
+}
+
 /* width */
 ::-webkit-scrollbar {
     width: 10px;
@@ -47,5 +51,5 @@ img {
 }
 
 .dot {
-    color: $red;
+    color: $red !important;
 }

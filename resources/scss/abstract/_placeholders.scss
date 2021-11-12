@@ -1,0 +1,41 @@
+.d-flex {
+    display: flex;
+}
+
+.align-items {
+    align-items: flex-start;
+
+    &--center {
+        align-items: center;
+    }
+
+    &--end {
+        align-items: flex-end;
+    }
+}
+
+.justify-content {
+    justify-content: flex-start;
+
+    &--between {
+        justify-content: space-between;
+    }
+
+    &--center {
+        justify-content: center;
+    }
+
+    &--end {
+        justify-content: flex-end;
+    }
+}
+
+.link {
+    color: $red;
+    text-decoration: underline;
+    font-weight: 500;
+}
+
+.required {
+    color: $red;
+}

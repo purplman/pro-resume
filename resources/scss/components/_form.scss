@@ -1,0 +1,29 @@
+.form {
+    &__box {
+        position: relative;
+    }
+
+    &__label {
+        display: flex;
+        margin-bottom: 0.5rem;
+        font-size: 14px;
+        transition: $transition;
+        font-weight: 600;
+    }
+
+    &__el {
+        font-family: "Poppins", sans-serif;
+        border: 1px solid $grey;
+        @include padding-y(0.5rem);
+        padding-right: 0;
+        padding-left: 0.5rem;
+        display: flex;
+        width: 100%;
+        outline: none;
+        transition: $transition;
+
+        &:focus {
+            border-color: $black;
+        }
+    }
+}

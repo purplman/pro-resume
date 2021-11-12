@@ -1,0 +1,3 @@
+<span class="required">
+    *
+</span>

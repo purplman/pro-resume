@@ -1,7 +1,4 @@
 // Header styles
-header {
-    height: 100vh;
-}
 .header {
     @include flex-between;
     @include padding-y(2rem);
@@ -41,8 +38,9 @@ header {
 }
 
 .hero {
-    margin-top: 10rem;
+    margin-top: 5rem;
     max-width: 75%;
+    text-align: center;
     @include push--auto;
 
     &__title {
@@ -51,13 +49,23 @@ header {
         color: $red;
     }
 
+    &__text {
+        font-size: 1.5rem;
+    }
+
     &__title,
     &__text {
-        margin-bottom: 3rem;
+        margin-bottom: 2rem;
         text-align: center;
     }
 }
 
-.fill-red {
-    fill: $red;
+.intro {
+    &__title {
+        font-size: 2.5rem;
+    }
+
+    &__text {
+        font-size: 1.3rem;
+    }
 }

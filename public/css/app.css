@@ -1,4 +1,41 @@
 @import url(https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;900&display=swap);
+.d-flex {
+  display: flex;
+}
+
+.align-items {
+  align-items: flex-start;
+}
+.align-items--center {
+  align-items: center;
+}
+.align-items--end {
+  align-items: flex-end;
+}
+
+.justify-content {
+  justify-content: flex-start;
+}
+.justify-content--between {
+  justify-content: space-between;
+}
+.justify-content--center {
+  justify-content: center;
+}
+.justify-content--end {
+  justify-content: flex-end;
+}
+
+.link {
+  color: #ef2747;
+  text-decoration: underline;
+  font-weight: 500;
+}
+
+.required {
+  color: #ef2747;
+}
+
 *,
 *::before,
 *::after {
@@ -26,6 +63,10 @@ img {
   width: 100%;
 }
 
+label {
+  cursor: pointer;
+}
+
 /* width */
 ::-webkit-scrollbar {
   width: 10px;
@@ -49,7 +90,7 @@ img {
 }
 
 .dot {
-  color: #ef2747;
+  color: #ef2747 !important;
 }
 
 body {
@@ -72,20 +113,7 @@ body {
   position: relative;
   overflow: hidden;
   border-radius: 0.25rem;
-}
-.btn span {
-  z-index: 2;
-}
-.btn::after {
-  position: absolute;
-  content: "";
-  width: 0;
-  height: 0;
-  top: -10px;
-  left: -25px;
-  z-index: 1;
-  background: #232323;
-  transition: 0.2s ease-in-out;
+  cursor: pointer;
 }
 .btn--primary {
   background: #232323;
@@ -93,6 +121,32 @@ body {
 }
 .btn--primary:hover {
   background: #ef2747;
+}
+
+.form__box {
+  position: relative;
+}
+.form__label {
+  display: flex;
+  margin-bottom: 0.5rem;
+  font-size: 14px;
+  transition: 0.2s ease-in-out;
+  font-weight: 600;
+}
+.form__el {
+  font-family: "Poppins", sans-serif;
+  border: 1px solid #aaa;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-right: 0;
+  padding-left: 0.5rem;
+  display: flex;
+  width: 100%;
+  outline: none;
+  transition: 0.2s ease-in-out;
+}
+.form__el:focus {
+  border-color: #232323;
 }
 
 .container {
@@ -1088,8 +1142,14 @@ body {
   margin-left: auto !important;
 }
 
-header {
-  height: 100vh;
+.mt-7,
+.my-7 {
+  margin-top: 5rem;
+}
+
+.mb-7,
+.my-7 {
+  margin-bottom: 5rem;
 }
 
 .header {
@@ -1126,8 +1186,9 @@ header {
 }
 
 .hero {
-  margin-top: 10rem;
+  margin-top: 5rem;
   max-width: 75%;
+  text-align: center;
   margin-left: auto;
   margin-right: auto;
 }
@@ -1136,11 +1197,29 @@ header {
   font-weight: 700;
   color: #ef2747;
 }
+.hero__text {
+  font-size: 1.5rem;
+}
 .hero__title, .hero__text {
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
   text-align: center;
 }
 
-.fill-red {
-  fill: #ef2747;
+.intro__title {
+  font-size: 2.5rem;
+}
+.intro__text {
+  font-size: 1.3rem;
+}
+
+.auth {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+}
+.auth__form {
+  width: 100%;
+  padding: 2rem;
+  border-radius: 0.5rem;
+  border: 1px solid #232323;
 }
