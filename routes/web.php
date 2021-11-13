@@ -2,19 +2,9 @@
 
 use App\Http\Controllers\Front\LoginController;
 use App\Http\Controllers\Front\RegisterController;
-use App\Http\Controllers\ResumeController;
+use App\Http\Controllers\Front\ResumeController;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 
 Route::view('/', 'index')->name('home');
 
@@ -29,12 +19,25 @@ Route::middleware('auth')->group(function () {
 
     // Resumes
     
-    Route::resource('resumes', ResumeController::class);
-    
-    Route::prefix('resumes')->group(function() {
-        Route::get('/create/contact', [ResumeController::class, 'contact'])->name('resumes.create.contact');
+    Route::prefix('resumes')->as('resumes.')->group(function() {
 
-        Route::get('/template/{id}', [ResumeController::class, 'setTemplate'])->name('resumes.setTemplate');
+        Route::prefix('create')->as('create.')->group(function() {
+            Route::get('template',     [ResumeController::class, 'template'])->name('template');
+            Route::get('contact',      [ResumeController::class, 'contact'])->name('contact');
+            Route::get('experience',   [ResumeController::class, 'experience'])->name('experience');
+            Route::get('education',    [ResumeController::class, 'education'])->name('education');
+            Route::get('skill',        [ResumeController::class, 'skill'])->name('skill');
+            Route::get('language',     [ResumeController::class, 'language'])->name('language');
+            Route::get('description',  [ResumeController::class, 'description'])->name('description');
+        });
+        
+        Route::post('/template',    [ResumeController::class, 'handleTemplate'])->name('template');
+        Route::post('/contact',     [ResumeController::class, 'handleContact'])->name('contact');
+        Route::post('/experience',  [ResumeController::class, 'handleExperience'])->name('experience');
+        Route::post('/education',   [ResumeController::class, 'handleEducation'])->name('education');
+        Route::post('/skill',       [ResumeController::class, 'handleSkill'])->name('skill');
+        Route::post('/language',    [ResumeController::class, 'handleLanguage'])->name('language');
+        Route::post('/description', [ResumeController::class, 'handleDescription'])->name('description');
 
     });
     

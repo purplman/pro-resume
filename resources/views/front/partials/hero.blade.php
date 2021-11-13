@@ -6,7 +6,7 @@
       {{ trans('app.hero_text') }}
   </p>
 
-  <a href="{{ route('resumes.create') }}" class="btn btn--primary">
+  <a href="{{ route('resumes.create.template') }}" class="btn btn--primary">
       {{ trans('actions.create_my_resume') }}
   </a>
   

@@ -18,7 +18,6 @@ class CreateExperiencesTable extends Migration
             $table->foreignId('resume_id')->constrained();
             $table->string('title');
             $table->string('employeer');
-            $table->string('location')->nullable();
             $table->date('start_date')->nullable();
             $table->date('end_date')->nullable();
             $table->text('tasks')->nullable();

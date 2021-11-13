@@ -1,5 +1,7 @@
 @extends('front.layouts.master')
 
+@section('title', 'Contact details - ' . env('APP_NAME'))
+
 @section('content')
 <section class="mt-5">
     
@@ -8,7 +10,7 @@
         {{-- list templates here --}}
 
     <div id="contact-form" class="resume__contact">
-        <form action="{{ route('resumes.store') }}" method="post" class="form">
+        <form action="{{ route('resumes.contact') }}" method="post" class="form">
         @csrf
         <div class="row align-items--center">
             <div class="col-lg-6 resume__contact__form">
@@ -20,7 +22,8 @@
                     'label' => trans('app.profession'),
                     'name' => 'profession',
                     'required' => true,
-                    'placeholder' => 'Developer'
+                    'placeholder' => 'Developer',
+                    'value' => auth()->user()->resume->profession ?? ''
                 ])
 
                 <!-- city & address -->
@@ -31,7 +34,8 @@
                             'label' => trans('app.city'),
                             'name' => 'city',
                             'required' => true,
-                            'placeholder' => 'New York'
+                            'placeholder' => 'New York',
+                            'value' => auth()->user()->resume->contact->city ?? ''
                         ])
                     </div>
                     <div class="col-md-6">
@@ -39,7 +43,8 @@
                             'label' => trans('app.address'),
                             'name' => 'address',
                             'required' => true,
-                            'placeholder' => 'Broadway str.'
+                            'placeholder' => 'Broadway str.',
+                            'value' => auth()->user()->resume->contact->address ?? ''
                         ])
                     </div>
                 </div>
@@ -52,7 +57,8 @@
                             'label' => trans('app.phone'),
                             'name' => 'phone',
                             'required' => true,
-                            'placeholder' => '(+1) 123456789'
+                            'placeholder' => '(+1) 123456789',
+                            'value' => auth()->user()->resume->contact->phone ?? ''
                         ])
                     </div>
                     <div class="col-md-6">
@@ -62,7 +68,8 @@
                             'name' => 'email',
                             'required' => true,
                             'value' => auth()->user()->email,
-                            'placeholder' => 'johndoe@gmail.com'
+                            'placeholder' => 'johndoe@gmail.com',
+                            'value' => auth()->user()->resume->contact->email ?? auth()->user()->email
                         ])
                     </div>
                 </div>
@@ -74,13 +81,14 @@
                     'type' => 'url',
                     'name' => 'linkedin',
                     'required' => false,
-                    'placeholder' => 'https://linkedin.com/johndoe'
+                    'placeholder' => 'https://linkedin.com/johndoe',
+                    'value' => auth()->user()->resume->contact->linkedin ?? ''
                 ])
                 
 
             </div>
             <div class="col-lg-6 resume__contact__image">
-                <img src="{{ asset('img/get-in-touch.svg') }}" alt="">
+                <img src="{{ asset('img/get-in-touch.svg') }}" alt="{{ env('APP_NAME') }}">
             </div>
         </div>
 

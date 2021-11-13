@@ -3,7 +3,7 @@
         <div class="header">
             <div class="header__left">
                 <div class="header__logo">
-                    <a href="">
+                    <a href="{{ route('home') }}">
                         {{ env('APP_NAME') }}<span class="dot">.</span>
                     </a>
                 </div>
