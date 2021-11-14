@@ -13,6 +13,7 @@ use App\Models\Resume;
 use App\Services\ResumeService;
 use App\Services\UserService;
 use Illuminate\Http\Request;
+use PDF;
 
 class ResumeController extends Controller
 {
@@ -201,6 +202,8 @@ class ResumeController extends Controller
     public function show()
     {
         $resume = Resume::where('user_id', auth()->id())->with('contact', 'experiences', 'educations', 'skills', 'languages')->first();
+        $pdf = PDF::loadView('front.templates.professional', ['resume' => $resume]);
+        return $pdf->stream();
         return view('front.resumes.show', compact('resume'));
     }
 
