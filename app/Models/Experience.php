@@ -9,7 +9,7 @@ class Experience extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title', 'employeer', 'resume_id', 'start_date', 'end_date', 'current'];
+    protected $fillable = ['title', 'employeer', 'resume_id', 'tasks', 'start_date', 'end_date', 'current'];
 
     /**
      * The attributes that should be cast.

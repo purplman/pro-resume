@@ -86,7 +86,7 @@ class ResumeController extends Controller
      */
     public function handleExperience(StoreResumeExperienceRequest $request)
     {
-        $this->resumeService->storeExperience($request);
+        $this->resumeService->storeExperiences($request);
         return redirect()->route('resumes.create.education');
     }
 
@@ -174,8 +174,8 @@ class ResumeController extends Controller
      */
     public function handleDescription(StoreResumeDescriptionRequest $request)
     {
-        $this->resumeService->updateDescription($request->descrtiption);
-        return redirect()->route('resumes.create.description');
+        $this->resumeService->updateDescription($request->description);
+        return redirect()->route('home');
     }
 
 
@@ -198,9 +198,10 @@ class ResumeController extends Controller
      * @param  \App\Models\Resume  $resume
      * @return \Illuminate\Http\Response
      */
-    public function show(Resume $resume)
+    public function show()
     {
-        //
+        $resume = Resume::where('user_id', auth()->id())->with('contact', 'experiences', 'educations', 'skills', 'languages')->first();
+        return view('front.resumes.show', compact('resume'));
     }
 
     /**

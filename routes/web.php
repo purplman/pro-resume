@@ -20,6 +20,7 @@ Route::middleware('auth')->group(function () {
     // Resumes
     
     Route::prefix('resumes')->as('resumes.')->group(function() {
+        Route::get('/show', [ResumeController::class, 'show'])->name('show');
 
         Route::prefix('create')->as('create.')->group(function() {
             Route::get('template',     [ResumeController::class, 'template'])->name('template');

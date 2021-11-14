@@ -18,7 +18,7 @@
                 <!-- description -->
                 @include('front.partials.formbox', [
                     'label' => trans('app.description'),
-                    'name' => 'name',
+                    'name' => 'description',
                     'required' => true,
                     'el' => 'textarea'
                 ])

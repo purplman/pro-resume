@@ -28,6 +28,20 @@ class ResumeService {
     }
 
     /**
+     * Get all resume templates
+     *
+     * @param  String $id
+     * @return Boolean
+     */
+    public static function setTemplate($id) 
+    {
+        auth()->user()->resume->update([
+            'template_id' => $id
+        ]);
+        return true;
+    }
+
+    /**
      * Store contact details.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -45,20 +59,6 @@ class ResumeService {
             'city'      => $contacts->city,
             'address'   => $contacts->address,
             'linkedin'  => $contacts->linkedin,
-        ]);
-        return true;
-    }
-
-    /**
-     * Get all resume templates
-     *
-     * @param  String $id
-     * @return Boolean
-     */
-    public static function setTemplate($id) 
-    {
-        auth()->user()->resume->update([
-            'template_id' => $id
         ]);
         return true;
     }
@@ -83,7 +83,7 @@ class ResumeService {
      * @param  String $id
      * @return Boolean
      */
-    public static function storeExperience($experience) 
+    public static function storeExperiences($experience) 
     {
         auth()->user()->resume->experiences()->create([
             'resume_id'  => auth()->user()->resume->id,

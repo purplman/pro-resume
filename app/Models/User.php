@@ -48,4 +48,8 @@ class User extends Authenticatable
         return $this->hasOne(Resume::class);
     }
 
+    public function fullname(){
+        return $this->firstname . ' ' . $this->lastname;
+    }
+
 }
