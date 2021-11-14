@@ -24,12 +24,12 @@ Route::middleware('auth')->group(function () {
 
         Route::prefix('create')->as('create.')->group(function() {
             Route::get('template',     [ResumeController::class, 'template'])->name('template');
-            Route::get('contact',      [ResumeController::class, 'contact'])->name('contact');
-            Route::get('experience',   [ResumeController::class, 'experience'])->name('experience');
-            Route::get('education',    [ResumeController::class, 'education'])->name('education');
-            Route::get('skill',        [ResumeController::class, 'skill'])->name('skill');
-            Route::get('language',     [ResumeController::class, 'language'])->name('language');
-            Route::get('description',  [ResumeController::class, 'description'])->name('description');
+            Route::view('contact',      'front.resumes.create.contact')->name('contact');
+            Route::view('experience',   'front.resumes.create.experience')->name('experience');
+            Route::view('education',    'front.resumes.create.education')->name('education');
+            Route::view('skill',        'front.resumes.create.skill')->name('skill');
+            Route::view('language',     'front.resumes.create.language')->name('language');
+            Route::view('description',  'front.resumes.create.description')->name('description');
         });
         
         Route::post('/template',    [ResumeController::class, 'handleTemplate'])->name('template');

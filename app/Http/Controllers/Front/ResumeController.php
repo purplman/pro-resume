@@ -47,16 +47,6 @@ class ResumeController extends Controller
     }
 
     /**
-     * Show the form to enter contact details.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function contact()
-    {
-        return view('front.resumes.create.contact');
-    }
-
-    /**
      * Store contact details.
      *
      * @param  \Illuminate\Http\Requests\StoreResumeContactRequest  $request
@@ -67,16 +57,6 @@ class ResumeController extends Controller
         $this->resumeService->storeContacts($request);
         $this->resumeService->updateProfession($request->profession);
         return redirect()->route('resumes.create.experience');
-    }
-
-    /**
-     * Show the form to enter work history details.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function experience()
-    {
-        return view('front.resumes.create.experience');
     }
 
     /**
@@ -92,16 +72,6 @@ class ResumeController extends Controller
     }
 
     /**
-     * Show the form to enter education details.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function education()
-    {
-        return view('front.resumes.create.education');
-    }
-
-    /**
      * Store education details
      *
      * @param  \Illuminate\Http\Requests\StoreResumeEducationRequest  $request
@@ -111,16 +81,6 @@ class ResumeController extends Controller
     {
         $this->resumeService->storeEducation($request);
         return redirect()->route('resumes.create.skill');
-    }
-
-    /**
-     * Show the form to enter skill details.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function skill()
-    {
-        return view('front.resumes.create.skill');
     }
 
     /**
@@ -136,16 +96,6 @@ class ResumeController extends Controller
     }
 
     /**
-     * Show the form to enter language details.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function language()
-    {
-        return view('front.resumes.create.language');
-    }
-
-    /**
      * Store language details.
      *
      * @param  \Illuminate\Http\Requests\StoreResumeLanguageRequest  $request
@@ -158,16 +108,6 @@ class ResumeController extends Controller
     }
     
     /**
-     * Show the form to enter description.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function description()
-    {
-        return view('front.resumes.create.description');
-    }
-
-    /**
      * Store language details.
      *
      * @param  \Illuminate\Http\Requests\StoreResumeDescriptionRequest  $request
@@ -179,20 +119,6 @@ class ResumeController extends Controller
         return redirect()->route('home');
     }
 
-
-    // ------------------------------------------------- to be handled later 
-
-
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
     /**
      * Display the specified resource.
      *
@@ -202,42 +128,21 @@ class ResumeController extends Controller
     public function show()
     {
         $resume = Resume::where('user_id', auth()->id())->with('contact', 'experiences', 'educations', 'skills', 'languages')->first();
-        $pdf = PDF::loadView('front.templates.professional', ['resume' => $resume]);
-        return $pdf->stream();
         return view('front.resumes.show', compact('resume'));
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Display the specified resource in pdf format.
      *
      * @param  \App\Models\Resume  $resume
      * @return \Illuminate\Http\Response
      */
-    public function edit(Resume $resume)
+    public function pdf()
     {
-        //
+        $resume = Resume::where('user_id', auth()->id())->with('contact', 'experiences', 'educations', 'skills', 'languages')->first();
+        $pdf = PDF::loadView('front.templates.professional', ['resume' => $resume]);
+        return $pdf->stream();
+        return view('front.resumes.show', compact('resume'));
     }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Resume  $resume
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Resume $resume)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Resume  $resume
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Resume $resume)
-    {
-        //
-    }
+    
 }
