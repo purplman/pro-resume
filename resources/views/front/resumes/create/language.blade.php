@@ -26,11 +26,18 @@
                         ])
                     </div>
                     <div class="col-md-6">
-                        @include('front.partials.formbox', [
-                            'label' => trans('app.level'),
-                            'name' => 'level',
-                            'required' => false,
-                        ])
+                        <div class="form__box">
+                            <label class="form__label">
+                                {{ trans('app.level') }}
+                            </label>
+                            <select class="form__el"  name="level">
+                                <option value="">Select a level</option>
+                                <option value="1">Beginner</option>
+                                <option value="2">Elementary</option>
+                                <option value="3">Intermediate</option>
+                                <option value="4">Upper Intermediate</option>
+                            </select>
+                        </div>
                     </div>
                 </div>
             </div>

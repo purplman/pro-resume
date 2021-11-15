@@ -116,7 +116,7 @@ class ResumeController extends Controller
     public function handleDescription(StoreResumeDescriptionRequest $request)
     {
         $this->resumeService->updateDescription($request->description);
-        return redirect()->route('home');
+        return redirect()->route('resumes.show');
     }
 
     /**

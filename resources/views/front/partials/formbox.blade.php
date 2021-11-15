@@ -5,14 +5,14 @@
             @include('front.partials.required')
         @endif
     </label>
-    @if (isset($el))
+    @if (isset($el) && $el === 'textarea')
         <textarea 
         class="form__el" 
         name="{{ $name }}" 
         rows="10"
         {{ $required ? 'required' : '' }}></textarea>
     @else
-        <input 
+    <input 
             class="form__el" 
             type="{{ $type ?? 'text' }}" 
             value="{{ $value ?? '' }}" 
