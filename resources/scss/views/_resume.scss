@@ -1,0 +1,151 @@
+.resume {
+    border: 1px solid $yellow;
+
+    &__sidebar {
+        background: $yellow;
+
+        .resume__header {
+            text-align: center;
+            height: 8rem;
+            background: $white;
+        }
+
+        .resume__body {
+            text-align: center;
+        }
+
+        .resume__avatar {
+            @include square(8rem, 50%);
+            position: relative;
+            transform: translateY(-4rem);
+            @include push--auto;
+            overflow: hidden;
+            border: 1px solid $yellow;
+        }
+
+        .resume__fullname {
+            font-size: 2rem;
+
+            span:first-child {
+                font-weight: 400;
+            }
+        }
+
+        .resume__profession {
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .resume__title {
+            margin-bottom: 1rem;
+        }
+
+        .resume__block {
+            @include padding-y(5rem);
+            @include padding-x(1rem);
+            position: relative;
+
+            &:not(:last-child)::after {
+                @include pseudo($width: 30%, $height: 2px);
+                background: $black;
+                bottom: 0;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+            &-contact {
+                li:not(:last-child) {
+                    margin-bottom: 1rem;
+                }
+                span:first-child {
+                    text-transform: uppercase;
+                    font-weight: 600;
+                    display: flex;
+                    justify-content: center;
+                }
+                span:last-child {
+                    font-size: 14px;
+                }
+            }
+
+            &-skills {
+                li {
+                    @include flex-center;
+                }
+
+                span {
+                    margin-right: 1rem;
+                    width: 5rem;
+                }
+
+                .levels {
+                    display: flex;
+                }
+
+                .level {
+                    height: 0.5em;
+                    width: 1.25rem;
+                    background: $white;
+                    border-radius: 0.25rem;
+
+                    &:not(:last-child) {
+                        margin-right: 0.5rem;
+                    }
+
+                    &--filled {
+                        background: $black;
+                    }
+                }
+            }
+        }
+    }
+
+    &__main {
+        padding-top: 4rem;
+        padding-left: 4rem;
+        padding-right: 2rem;
+
+        .resume__block {
+            border-left: 2px solid $black;
+            position: relative;
+            margin-bottom: 5rem;
+
+            &::after {
+                @include pseudo($width: 0.5rem, $height: 18px);
+                background: $black;
+                top: 0;
+            }
+
+            li:not(:last-child) {
+                margin-bottom: 1rem;
+            }
+        }
+
+        .resume__title {
+            text-transform: uppercase;
+            font-weight: 500;
+            line-height: 1;
+            margin-bottom: 2rem;
+        }
+
+        .resume__subtitle {
+            @include flex-between;
+            margin-bottom: 1rem;
+
+            div:last-child,
+            span:first-child {
+                font-weight: 600;
+            }
+        }
+
+        .resume__title,
+        .resume__description {
+            padding-left: 2rem;
+        }
+
+        .resume__text {
+            font-size: 14px;
+            opacity: 0.8;
+        }
+    }
+}

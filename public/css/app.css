@@ -1234,3 +1234,141 @@ body {
   border-radius: 0.5rem;
   background: #fff;
 }
+
+.resume {
+  border: 1px solid #f7ce96;
+}
+.resume__sidebar {
+  background: #f7ce96;
+}
+.resume__sidebar .resume__header {
+  text-align: center;
+  height: 8rem;
+  background: #fff;
+}
+.resume__sidebar .resume__body {
+  text-align: center;
+}
+.resume__sidebar .resume__avatar {
+  width: 8rem;
+  height: 8rem;
+  border-radius: 50%;
+  position: relative;
+  transform: translateY(-4rem);
+  margin-left: auto;
+  margin-right: auto;
+  overflow: hidden;
+  border: 1px solid #f7ce96;
+}
+.resume__sidebar .resume__fullname {
+  font-size: 2rem;
+}
+.resume__sidebar .resume__fullname span:first-child {
+  font-weight: 400;
+}
+.resume__sidebar .resume__profession {
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.resume__sidebar .resume__title {
+  margin-bottom: 1rem;
+}
+.resume__sidebar .resume__block {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+  padding-right: 1rem;
+  padding-left: 1rem;
+  position: relative;
+}
+.resume__sidebar .resume__block:not(:last-child)::after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 30%;
+  height: 2px;
+  background: #232323;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.resume__sidebar .resume__block-contact li:not(:last-child) {
+  margin-bottom: 1rem;
+}
+.resume__sidebar .resume__block-contact span:first-child {
+  text-transform: uppercase;
+  font-weight: 600;
+  display: flex;
+  justify-content: center;
+}
+.resume__sidebar .resume__block-contact span:last-child {
+  font-size: 14px;
+}
+.resume__sidebar .resume__block-skills li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.resume__sidebar .resume__block-skills span {
+  margin-right: 1rem;
+  width: 5rem;
+}
+.resume__sidebar .resume__block-skills .levels {
+  display: flex;
+}
+.resume__sidebar .resume__block-skills .level {
+  height: 0.5em;
+  width: 1.25rem;
+  background: #fff;
+  border-radius: 0.25rem;
+}
+.resume__sidebar .resume__block-skills .level:not(:last-child) {
+  margin-right: 0.5rem;
+}
+.resume__sidebar .resume__block-skills .level--filled {
+  background: #232323;
+}
+.resume__main {
+  padding-top: 4rem;
+  padding-left: 4rem;
+  padding-right: 2rem;
+}
+.resume__main .resume__block {
+  border-left: 2px solid #232323;
+  position: relative;
+  margin-bottom: 5rem;
+}
+.resume__main .resume__block::after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 0.5rem;
+  height: 18px;
+  background: #232323;
+  top: 0;
+}
+.resume__main .resume__block li:not(:last-child) {
+  margin-bottom: 1rem;
+}
+.resume__main .resume__title {
+  text-transform: uppercase;
+  font-weight: 500;
+  line-height: 1;
+  margin-bottom: 2rem;
+}
+.resume__main .resume__subtitle {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+.resume__main .resume__subtitle div:last-child,
+.resume__main .resume__subtitle span:first-child {
+  font-weight: 600;
+}
+.resume__main .resume__title,
+.resume__main .resume__description {
+  padding-left: 2rem;
+}
+.resume__main .resume__text {
+  font-size: 14px;
+  opacity: 0.8;
+}

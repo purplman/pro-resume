@@ -142,7 +142,6 @@ class ResumeController extends Controller
         $resume = Resume::where('user_id', auth()->id())->with('contact', 'experiences', 'educations', 'skills', 'languages')->first();
         $pdf = PDF::loadView('front.templates.professional', ['resume' => $resume]);
         return $pdf->stream();
-        return view('front.resumes.show', compact('resume'));
     }
     
 }
