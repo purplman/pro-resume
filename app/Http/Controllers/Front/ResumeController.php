@@ -91,7 +91,8 @@ class ResumeController extends Controller
      */
     public function handleSkill(StoreResumeSkillRequest $request)
     {
-        $this->resumeService->storeSkills($request);
+        $res = $this->resumeService->storeSkills($request);
+        $this->successMessage($res->content()); // Get response message
         return redirect()->route('resumes.create.language');
     }
 
@@ -103,7 +104,8 @@ class ResumeController extends Controller
      */
     public function handleLanguage(StoreResumeLanguageRequest $request)
     {
-        $this->resumeService->storeLanguages($request);
+        $res = $this->resumeService->storeLanguages($request);
+        $this->successMessage($res->content()); // Get response message
         return redirect()->route('resumes.create.description');
     }
     

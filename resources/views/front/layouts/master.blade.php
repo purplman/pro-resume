@@ -21,5 +21,9 @@
 
             @include('front.partials.footer')
         </div>
+        
+        @include('front.inc.scripts.swal')
+
+        @yield('scripts')
     </body>
 </html>

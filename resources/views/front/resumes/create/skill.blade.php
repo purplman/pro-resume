@@ -16,27 +16,35 @@
             <div class="col-lg-6 resume__skill__form">
                 <!-- skill & level -->
 
-                <div class="row mb-4">
-                    <div class="col-md-6">
-                        @include('front.partials.formbox', [
-                            'label' => trans('app.skill'),
-                            'name' => 'name',
-                            'required' => true,
-                        ])
-                    </div>
-                    <div class="col-md-6">
-                        <label class="form__label">
-                            {{ trans('app.level') }}
-                        </label>
-                        <select class="form__el"  name="level">
-                            <option value="">Select a level</option>
-                            <option value="1">Trainee</option>
-                            <option value="2">Novice</option>
-                            <option value="3">Proficent</option>
-                            <option value="4">Expert</option>
-                        </select>
+                <div class="skill-wrapper">
+                    <div class="skill-block">
+                        <div class="row mb-4">
+                            <div class="col-md-6">
+                                @include('front.partials.formbox', [
+                                    'label' => trans('app.skill'),
+                                    'name' => 'names[]',
+                                    'required' => true,
+                                ])
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form__box">
+                                    <label class="form__label">
+                                        {{ trans('app.level') }}
+                                    </label>
+                                    <select class="form__el"  name="levels[]">
+                                        <option value="">Select a level</option>
+                                        <option value="1">Trainee</option>
+                                        <option value="2">Novice</option>
+                                        <option value="3">Proficent</option>
+                                        <option value="4">Expert</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
+                
+                <a href="" id="addSkill">Add another</a>
             </div>
             <div class="col-lg-6 resume__skill__image">
                 <img src="{{ asset('img/skill.svg') }}" alt="{{ env('APP_NAME') }}">
@@ -60,4 +68,19 @@
     </div>
     
 </section>
+@endsection
+
+@section('scripts')
+    <script>
+        let btn = document.querySelector('#addSkill')
+        btn.addEventListener('click', e => {
+            e.preventDefault()
+            let skillBlock = document.querySelector('.skill-block')
+            let skillWrapper = document.querySelector('.skill-wrapper')
+            let newSkillBlock = skillBlock.cloneNode(true)
+            newSkillBlock.childNodes[1].childNodes[1].childNodes[1].childNodes[3].value = '' // this dives deep into the skill block element to find the damn input element and reset its value -_-
+            newSkillBlock.childNodes[1].childNodes[3].childNodes[1].childNodes[3].value = '' // and this one does the same thing for resetting value of the select element
+            skillWrapper.append(newSkillBlock)
+        } )
+    </script>
 @endsection

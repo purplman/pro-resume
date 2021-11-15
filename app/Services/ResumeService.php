@@ -2,13 +2,13 @@
 
 namespace App\Services;
 
-use App\Models\Education;
-use App\Models\Experience;
-use App\Models\Skill;
 use App\Models\Template;
 use Exception;
 
 class ResumeService {
+
+    // Response status codes
+    const CREATED = 201;
 
     /**
      * Get all resume templates
@@ -28,7 +28,7 @@ class ResumeService {
     }
 
     /**
-     * Get all resume templates
+     * Update resume template_id column
      *
      * @param  String $id
      * @return Boolean
@@ -37,6 +37,20 @@ class ResumeService {
     {
         auth()->user()->resume->update([
             'template_id' => $id
+        ]);
+        return true;
+    }
+
+    /**
+     * Update resume profession column
+     *
+     * @param  String $id
+     * @return Boolean
+     */
+    public static function updateProfession($profession) 
+    {
+        auth()->user()->resume->update([
+            'profession' => $profession
         ]);
         return true;
     }
@@ -59,20 +73,6 @@ class ResumeService {
             'city'      => $contacts->city,
             'address'   => $contacts->address,
             'linkedin'  => $contacts->linkedin,
-        ]);
-        return true;
-    }
-
-    /**
-     * Update resume profession column
-     *
-     * @param  String $id
-     * @return Boolean
-     */
-    public static function updateProfession($profession) 
-    {
-        auth()->user()->resume->update([
-            'profession' => $profession
         ]);
         return true;
     }
@@ -123,28 +123,32 @@ class ResumeService {
      */
     public static function storeSkills($skill) 
     {
-        auth()->user()->resume->skills()->create([
-            'resume_id'   => auth()->user()->resume->id,
-            'name'  =>  $skill->name,
-            'level' =>  $skill->level,
-        ]);
-        return true;
+        for($i = 0; $i < count($skill->names); $i++) {
+            auth()->user()->resume->skills()->create([
+                'resume_id'   => auth()->user()->resume->id,
+                'name'  =>  $skill->names[$i],
+                'level' =>  $skill->levels[$i],
+            ]);
+        }
+        return response('Skills added succesfully', self::CREATED);
     }
 
     /**
      * Store languages.
      *
      * @param  String $id
-     * @return Boolean
+     * @return \Illuminate\Http\Response
      */
     public static function storeLanguages($language) 
     {
-        auth()->user()->resume->languages()->create([
-            'resume_id'   => auth()->user()->resume->id,
-            'name'  =>  $language->name,
-            'level' =>  $language->level,
-        ]);
-        return true;
+        for($i = 0; $i < count($language->names); $i++) {
+            auth()->user()->resume->languages()->create([
+                'resume_id'   => auth()->user()->resume->id,
+                'name'  =>  $language->names[$i],
+                'level' =>  $language->levels[$i],
+            ]);
+        }
+        return response('Languages added succesfully', self::CREATED);
     }
 
     /**

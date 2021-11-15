@@ -24,7 +24,7 @@ class StoreResumeSkillRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required'
+            'names' => 'required'
         ];
     }
 }
