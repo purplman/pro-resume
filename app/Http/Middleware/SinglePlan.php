@@ -16,7 +16,7 @@ class SinglePlan
      */
     public function handle(Request $request, Closure $next)
     {
-        abort_if(auth()->user()->resume->profession, 402, 'To create another CV please upgrade your plan!');
+        // abort_if(auth()->user()->resume->profession, 402, 'To create another CV please upgrade your plan!');
         return $next($request);
     }
 }

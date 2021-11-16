@@ -9,7 +9,7 @@
         <textarea 
         class="form__el" 
         name="{{ $name }}" 
-        rows="10"
+        rows="5"
         {{ $required ? 'required' : '' }}></textarea>
     @else
     <input 

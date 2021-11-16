@@ -49,3 +49,9 @@
         text-align: right;
     }
 }
+
+.hr {
+    height: 1px;
+    background: #eee;
+    @include margin-y(2rem);
+}

@@ -17,13 +17,13 @@
 
                 <!-- language & level -->
 
-                <div class="language-wrapper">
-                    <div class="language-block">
+                <div class="block-wrapper">
+                    <div class="block">
                         <div class="row mb-4">
                             <div class="col-md-6">
                                 @include('front.partials.formbox', [
                                     'label' => trans('app.language'),
-                                    'name' => 'names[]',
+                                    'name' => 'name[]',
                                     'required' => true,
                                 ])
                             </div>
@@ -32,7 +32,7 @@
                                     <label class="form__label">
                                         {{ trans('app.level') }}
                                     </label>
-                                <select class="form__el"  name="levels[]">
+                                <select class="form__el"  name="level[]">
                                         <option value="">Select a level</option>
                                         <option value="1">Beginner</option>
                                         <option value="2">Elementary</option>
@@ -45,7 +45,7 @@
                     </div>
                 </div>
                 
-                <a href="" id="addLanguage">Add another</a>
+                <a href="" id="addBlock">+ Add another</a>
 
             </div>
             <div class="col-lg-6 resume__skill__image">
@@ -56,7 +56,7 @@
         
         <div class="row">
             <div class="col-md-6">
-                <a href="">
+                <a href="{{ route('resumes.create.skill') }}">
                     {{ trans('actions.back') }}
                 </a>
             </div>
@@ -74,16 +74,5 @@
 
 
 @section('scripts')
-    <script>
-        let btn = document.querySelector('#addLanguage')
-        btn.addEventListener('click', e => {
-            e.preventDefault()
-            let languageBlock = document.querySelector('.language-block')
-            let languageWrapper = document.querySelector('.language-wrapper')
-            let newLanguageBlock = languageBlock.cloneNode(true)
-            newLanguageBlock.childNodes[1].childNodes[1].childNodes[1].childNodes[3].value = '' // this dives deep into the language block element to find the damn input element and reset its value -_-
-            newLanguageBlock.childNodes[1].childNodes[3].childNodes[1].childNodes[3].value = '' // and this one does the same thing for resetting value of the select element
-            languageWrapper.append(newLanguageBlock)
-        } )
-    </script>
+    @include('front.inc.scripts.addBlock')
 @endsection

@@ -9,6 +9,7 @@ class ResumeService {
 
     // Response status codes
     const CREATED = 201;
+    const ACCEPTED = 202;
 
     /**
      * Get all resume templates
@@ -74,7 +75,7 @@ class ResumeService {
             'address'   => $contacts->address,
             'linkedin'  => $contacts->linkedin,
         ]);
-        return true;
+        return response('Contact details added succesfully', self::CREATED);
     }
     
     /**
@@ -85,16 +86,18 @@ class ResumeService {
      */
     public static function storeExperiences($experience) 
     {
-        auth()->user()->resume->experiences()->create([
-            'resume_id'  => auth()->user()->resume->id,
-            'title'      => $experience->title,
-            'employeer'  => $experience->employeer,
-            'start_date' => $experience->start_date,
-            'end_date'   => $experience->end_date,
-            'current'    => $experience->current ? 1 : 0,
-            'tasks'      => $experience->tasks
-        ]);
-        return true;
+        for($i = 0; $i < count($experience->title); $i++) {
+            auth()->user()->resume->experiences()->create([
+                'resume_id'  => auth()->user()->resume->id,
+                'title'      => $experience->title[$i],
+                'employeer'  => $experience->employeer[$i],
+                'start_date' => $experience->start_date[$i],
+                'end_date'   => $experience->end_date[$i],
+                'tasks'      => $experience->tasks[$i],
+                'current'    => isset($experience->current[$i]) ? 1 : 0
+            ]);
+        }
+        return response('Work history added succesfully', self::CREATED);
     }
 
     /**
@@ -105,14 +108,17 @@ class ResumeService {
      */
     public static function storeEducation($education) 
     {
-        auth()->user()->resume->educations()->create([
-            'school_name' => $education->school_name,
-            'field'       => $education->field,
-            'start_date'  => $education->start_date,
-            'end_date'    => $education->end_date,
-            'current'     => $education->current ? 1 : 0,
-        ]);
-        return true;
+        for($i = 0; $i < count($education->school_name); $i++) {
+            auth()->user()->resume->educations()->create([
+                'school_name' => $education->school_name[$i],
+                'field'       => $education->field[$i],
+                'degree'      => $education->degree[$i],
+                'start_date'  => $education->start_date[$i],
+                'end_date'    => $education->end_date[$i],
+                'current'     => isset($education->current[$i]) ? 1 : 0,
+            ]);
+        }
+        return response('Education history added succesfully', self::CREATED);
     }
 
     /**
@@ -123,11 +129,11 @@ class ResumeService {
      */
     public static function storeSkills($skill) 
     {
-        for($i = 0; $i < count($skill->names); $i++) {
+        for($i = 0; $i < count($skill->name); $i++) {
             auth()->user()->resume->skills()->create([
                 'resume_id'   => auth()->user()->resume->id,
-                'name'  =>  $skill->names[$i],
-                'level' =>  $skill->levels[$i],
+                'name'  =>  $skill->name[$i],
+                'level' =>  $skill->level[$i],
             ]);
         }
         return response('Skills added succesfully', self::CREATED);
@@ -141,11 +147,11 @@ class ResumeService {
      */
     public static function storeLanguages($language) 
     {
-        for($i = 0; $i < count($language->names); $i++) {
+        for($i = 0; $i < count($language->name); $i++) {
             auth()->user()->resume->languages()->create([
                 'resume_id'   => auth()->user()->resume->id,
-                'name'  =>  $language->names[$i],
-                'level' =>  $language->levels[$i],
+                'name'  =>  $language->name[$i],
+                'level' =>  $language->level[$i],
             ]);
         }
         return response('Languages added succesfully', self::CREATED);
@@ -162,6 +168,6 @@ class ResumeService {
         auth()->user()->resume->update([
             'description' => $description
         ]);
-        return true;
+        return response('Your resume is ready to review', self::ACCEPTED);
     }
 }

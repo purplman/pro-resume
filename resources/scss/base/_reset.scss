@@ -29,6 +29,10 @@ label {
     cursor: pointer;
 }
 
+section {
+    @include padding-y(3rem);
+}
+
 /* width */
 ::-webkit-scrollbar {
     width: 10px;

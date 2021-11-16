@@ -32,7 +32,7 @@
         
         <div class="row">
             <div class="col-md-6">
-                <a href="">
+                <a href="{{ route('resumes.create.language') }}">
                     {{ trans('actions.back') }}
                 </a>
             </div>

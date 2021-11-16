@@ -11,7 +11,6 @@ use App\Http\Requests\StoreResumeLanguageRequest;
 use App\Http\Requests\StoreResumeSkillRequest;
 use App\Models\Resume;
 use App\Services\ResumeService;
-use App\Services\UserService;
 use Illuminate\Http\Request;
 use PDF;
 
@@ -20,7 +19,6 @@ class ResumeController extends Controller
     public function __construct()
     {
         $this->resumeService = new ResumeService;
-        $this->userService   = new userService;
     }
     /**
      * Show the form for creating a new resource.
@@ -67,7 +65,8 @@ class ResumeController extends Controller
      */
     public function handleExperience(StoreResumeExperienceRequest $request)
     {
-        $this->resumeService->storeExperiences($request);
+        $res = $this->resumeService->storeExperiences($request);
+        $this->successMessage($res->content()); // Get response message
         return redirect()->route('resumes.create.education');
     }
 
@@ -79,7 +78,8 @@ class ResumeController extends Controller
      */
     public function handleEducation(StoreResumeEducationRequest $request)
     {
-        $this->resumeService->storeEducation($request);
+        $res = $this->resumeService->storeEducation($request);
+        $this->successMessage($res->content()); // Get response message
         return redirect()->route('resumes.create.skill');
     }
 
@@ -117,7 +117,8 @@ class ResumeController extends Controller
      */
     public function handleDescription(StoreResumeDescriptionRequest $request)
     {
-        $this->resumeService->updateDescription($request->description);
+        $res = $this->resumeService->updateDescription($request->description);
+        $this->successMessage($res->content()); // Get response message
         return redirect()->route('resumes.show');
     }
 

@@ -95,7 +95,7 @@
         
         <div class="row">
             <div class="col-md-6">
-                <a href="">
+                <a href="{{ route('resumes.create.template') }}">
                     {{ trans('actions.back') }}
                 </a>
             </div>
